@@ -3,18 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dados</title>
+    <title>Juego de Dados</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="inicio" class="pantalla activa">
-    <button id="btnInicio" class="boton-inicio">
-        INICIAR
-    </button>
-</div>
+    <!-- INICIO -->
+    <div id="inicio" class="pantalla activa">
+        <button id="btnInicio" class="boton-inicio">
+            INICIAR
+        </button>
+    </div>
 
-<script src="script.js"></script>
+    <!-- DADO 1 -->
+    <div id="pantalla1" class="pantalla">
+
+        <h2>Primer Dado</h2>
+
+        <div id="dado1" class="dado">🎲</div>
+
+        <h3 id="resultado1"></h3>
+
+        <button id="relanzar1" disabled>
+            Volver a lanzar
+        </button>
+
+        <button id="siguiente1" disabled>
+            Siguiente
+        </button>
+
+    </div>
+
+    <!-- DADO 2 -->
+    <div id="pantalla2" class="pantalla">
+
+        <h2>Segundo Dado</h2>
+
+        <div id="dado2" class="dado">🎲</div>
+
+        <h3 id="resultado2"></h3>
+
+        <button id="relanzar2" disabled>
+            Volver a lanzar
+        </button>
+
+        <button id="siguiente2" disabled>
+            Siguiente
+        </button>
+
+    </div>
+
+    <!-- RESUMEN -->
+    <div id="resumen" class="pantalla">
+
+        <h2>Resultado Final</h2>
+
+        <div id="final1"></div>
+        <br>
+        <div id="final2"></div>
+
+        <br>
+
+        <button id="reinicio">
+            Volver al inicio
+        </button>
+
+    </div>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
