@@ -1,89 +1,174 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    text-align: center;
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    text-align:center;
+    background:#f0f0f0;
 }
 
-.pantalla {
-    display: none;
-    min-height: 100vh;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.pantalla{
+    display:none;
+    min-height:100vh;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
 }
 
-.activa {
-    display: flex;
+.activa{
+    display:flex;
 }
 
-#inicio {
-    background: #0057ff;
+#inicio{
+    background:#0057ff;
 }
 
-.boton-inicio {
-    background: yellow;
-    color: black;
-    font-size: 32px;
-    font-weight: bold;
-    padding: 20px 50px;
-    border-radius: 20px;
-    border: none;
+.boton-inicio{
+    background:yellow;
+    color:black;
+    border:none;
+    border-radius:20px;
+    padding:20px 60px;
+    font-size:32px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.dado {
-    width: 200px;
-    height: 200px;
-    border: 6px solid #222;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 32px;
-    font-weight: bold;
-    background: white;
-    cursor: pointer;
-    margin: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    transition: transform 0.2s;
+button{
+    margin:10px;
+    padding:12px 24px;
+    font-size:18px;
+    cursor:pointer;
 }
 
-.dado:hover {
-    transform: scale(1.05);
+.contenedor-dado{
+    perspective:1200px;
+    width:300px;
+    height:300px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-button {
-    margin: 10px;
-    padding: 12px 20px;
+.dado3d{
+    width:160px;
+    height:160px;
+    position:relative;
+    transform-style:preserve-3d;
+    transition:transform .8s ease;
+    cursor:pointer;
 }
 
-.animar-dado {
-    animation: caidaGiro 1s ease;
+.dado3d::after{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:20px;
+    background:rgba(0,0,0,.25);
+    border-radius:50%;
+    bottom:-50px;
+    left:20px;
+    filter:blur(12px);
 }
 
-@keyframes caidaGiro {
+.cara{
+    position:absolute;
 
-    0% {
-        transform: translateY(-250px) rotate(0deg);
+    width:160px;
+    height:160px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border:4px solid #222;
+    border-radius:20px;
+
+    font-size:24px;
+    font-weight:bold;
+
+    background:linear-gradient(
+        135deg,
+        #ffffff,
+        #ececec
+    );
+
+    box-shadow:0 0 15px rgba(0,0,0,.25);
+
+    backface-visibility:hidden;
+}
+
+.frente{
+    transform:translateZ(80px);
+}
+
+.atras{
+    transform:rotateY(180deg) translateZ(80px);
+}
+
+.derecha{
+    transform:rotateY(90deg) translateZ(80px);
+}
+
+.izquierda{
+    transform:rotateY(-90deg) translateZ(80px);
+}
+
+.arriba{
+    transform:rotateX(90deg) translateZ(80px);
+}
+
+.abajo{
+    transform:rotateX(-90deg) translateZ(80px);
+}
+
+.lanzando{
+    animation:lanzamientoReal 1.8s ease-out;
+}
+
+@keyframes lanzamientoReal{
+
+    0%{
+        transform:
+        translateY(-450px)
+        rotateX(0deg)
+        rotateY(0deg);
     }
 
-    100% {
-        transform: translateY(0px) rotate(1080deg);
+    50%{
+        transform:
+        translateY(50px)
+        rotateX(720deg)
+        rotateY(720deg);
     }
 
+    70%{
+        transform:
+        translateY(-40px)
+        rotateX(900deg)
+        rotateY(900deg);
+    }
+
+    85%{
+        transform:
+        translateY(20px)
+        rotateX(1000deg)
+        rotateY(1000deg);
+    }
+
+    100%{
+        transform:
+        translateY(0px)
+        rotateX(1080deg)
+        rotateY(1080deg);
+    }
 }
 
-#final1,
-#final2 {
-
-    width: 250px;
-    padding: 20px;
-    margin: 10px;
-
-    border: 3px solid black;
-    border-radius: 15px;
-
-    font-size: 30px;
-    font-weight: bold;
-
-    background: white;
+.resultado{
+    width:300px;
+    padding:20px;
+    margin:15px;
+    font-size:28px;
+    font-weight:bold;
+    background:white;
+    border:3px solid #0057ff;
+    border-radius:15px;
 }

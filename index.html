@@ -1,28 +1,39 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego de Dados</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <!-- INICIO -->
     <div id="inicio" class="pantalla activa">
         <button id="btnInicio" class="boton-inicio">
             INICIAR
         </button>
     </div>
 
-    <!-- DADO 1 -->
     <div id="pantalla1" class="pantalla">
 
         <h2>Primer Dado</h2>
 
-        <div id="dado1" class="dado">🎲</div>
+        <div class="contenedor-dado">
 
-        <h3 id="resultado1"></h3>
+            <div id="dado1" class="dado3d">
+
+                <div class="cara frente">ASES</div>
+                <div class="cara atras">REYES</div>
+                <div class="cara derecha">DAMAS</div>
+                <div class="cara izquierda">JOTAS</div>
+                <div class="cara arriba">NEGROS</div>
+                <div class="cara abajo">ROJOS</div>
+
+            </div>
+
+        </div>
 
         <button id="relanzar1" disabled>
             Volver a lanzar
@@ -34,14 +45,24 @@
 
     </div>
 
-    <!-- DADO 2 -->
     <div id="pantalla2" class="pantalla">
 
         <h2>Segundo Dado</h2>
 
-        <div id="dado2" class="dado">🎲</div>
+        <div class="contenedor-dado">
 
-        <h3 id="resultado2"></h3>
+            <div id="dado2" class="dado3d">
+
+                <div class="cara frente">ASES2</div>
+                <div class="cara atras">REYES2</div>
+                <div class="cara derecha">DAMAS2</div>
+                <div class="cara izquierda">JOTAS2</div>
+                <div class="cara arriba">NEGROS2</div>
+                <div class="cara abajo">ROJOS2</div>
+
+            </div>
+
+        </div>
 
         <button id="relanzar2" disabled>
             Volver a lanzar
@@ -53,16 +74,13 @@
 
     </div>
 
-    <!-- RESUMEN -->
     <div id="resumen" class="pantalla">
 
         <h2>Resultado Final</h2>
 
-        <div id="final1"></div>
-        <br>
-        <div id="final2"></div>
+        <div id="final1" class="resultado"></div>
 
-        <br>
+        <div id="final2" class="resultado"></div>
 
         <button id="reinicio">
             Volver al inicio
@@ -73,4 +91,5 @@
     <script src="script.js"></script>
 
 </body>
+
 </html>
