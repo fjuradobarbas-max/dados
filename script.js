@@ -71,4 +71,6 @@ document.getElementById("reinicio").onclick = function () {
     document.getElementById("relanzar2").disabled = true;
     document.getElementById("siguiente2").disabled = true;
 
-    mostrarPantalla
+    mostrarPantalla("inicio");
+
+};
