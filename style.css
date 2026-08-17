@@ -340,20 +340,21 @@ button:disabled{
 
 .imagen-portada{
 
-    width: 320px;
-    max-width: 80%;
+    width:320px;
+    max-width:80%;
 
-    margin-bottom: 40px;
+    background:none;
 
     filter:
         drop-shadow(
-            0 15px 25px rgba(0,0,0,.35)
+            0 20px 30px rgba(0,0,0,.35)
         );
 
     animation:
         aparecer 1.2s ease,
         flotarPortada 3s ease-in-out infinite;
 }
+
 
 @keyframes aparecer{
 
