@@ -1,19 +1,21 @@
 let valor1 = "";
 let valor2 = "";
 
-function mostrarPantalla(id) {
+function mostrarPantalla(id){
 
-    document.querySelectorAll(".pantalla")
+    document
+        .querySelectorAll(".pantalla")
         .forEach(p => p.classList.remove("activa"));
 
-    document.getElementById(id)
+    document
+        .getElementById(id)
         .classList.add("activa");
 }
 
-function reproducirSonido() {
+function reproducirSonido(){
 
     const ctx =
-        new (window.AudioContext || window.webkitAudioContext)();
+        new(window.AudioContext || window.webkitAudioContext)();
 
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
@@ -29,15 +31,15 @@ function reproducirSonido() {
     osc.stop(ctx.currentTime + 0.25);
 }
 
-function lanzarDado(idDado, tipo) {
+function lanzarDado(idDado,tipo){
 
     const dado =
         document.getElementById(idDado);
 
     reproducirSonido();
 
-    if (navigator.vibrate) {
-        navigator.vibrate(250);
+    if(navigator.vibrate){
+        navigator.vibrate(200);
     }
 
     const resultado =
@@ -55,7 +57,7 @@ function lanzarDado(idDado, tipo) {
 
         let nombre = "";
 
-        switch (resultado) {
+        switch(resultado){
 
             case 0:
                 dado.style.transform =
@@ -94,14 +96,14 @@ function lanzarDado(idDado, tipo) {
                 break;
         }
 
-        if (tipo === 1) {
+        if(tipo === 1){
 
             valor1 = nombre;
 
             document.getElementById("relanzar1").disabled = false;
             document.getElementById("siguiente1").disabled = false;
 
-        } else {
+        }else{
 
             valor2 = nombre;
 
@@ -109,17 +111,69 @@ function lanzarDado(idDado, tipo) {
             document.getElementById("siguiente2").disabled = false;
         }
 
-    }, 1800);
+    },1600);
 }
 
-document.getElementById("btnInicio").onclick = function () {
+document.getElementById("btnInicio").onclick = function(){
 
     mostrarPantalla("pantalla1");
 };
 
-document.getElementById("dado1").onclick = function () {
+document.getElementById("dado1").onclick = function(){
 
-    lanzarDado("dado1", 1);
+    lanzarDado("dado1",1);
 };
 
-document.getElementById
+document.getElementById("dado2").onclick = function(){
+
+    lanzarDado("dado2",2);
+};
+
+document.getElementById("relanzar1").onclick = function(){
+
+    lanzarDado("dado1",1);
+};
+
+document.getElementById("relanzar2").onclick = function(){
+
+    lanzarDado("dado2",2);
+};
+
+document.getElementById("siguiente1").onclick = function(){
+
+    mostrarPantalla("pantalla2");
+};
+
+document.getElementById("siguiente2").onclick = function(){
+
+    document.getElementById("final1").innerHTML =
+        "PRIMER DADO<br><br>" + valor1;
+
+    document.getElementById("final2").innerHTML =
+        "SEGUNDO DADO<br><br>" + valor2;
+
+    mostrarPantalla("resumen");
+};
+
+document.getElementById("reinicio").onclick = function(){
+
+    valor1 = "";
+    valor2 = "";
+
+    document.getElementById("relanzar1").disabled = true;
+    document.getElementById("siguiente1").disabled = true;
+
+    document.getElementById("relanzar2").disabled = true;
+    document.getElementById("siguiente2").disabled = true;
+
+    document.getElementById("dado1").style.transform =
+        "rotateX(0deg) rotateY(0deg)";
+
+    document.getElementById("dado2").style.transform =
+        "rotateX(0deg) rotateY(0deg)";
+
+    document.getElementById("final1").innerHTML = "";
+    document.getElementById("final2").innerHTML = "";
+
+    mostrarPantalla("inicio");
+};
