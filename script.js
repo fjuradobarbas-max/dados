@@ -97,5 +97,4 @@ document
     valor2 = "";
 
     cambiarPantalla("inicio");
-
 });
