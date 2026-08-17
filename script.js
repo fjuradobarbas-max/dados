@@ -19,6 +19,10 @@ document.getElementById("btnInicio").onclick = function () {
 
 document.getElementById("dado1").onclick = function () {
 
+    animarDado("dado1");
+    
+    reproducirSonido();
+    
     valor1 = caras1[Math.floor(Math.random() * 6)];
 
     document.getElementById("resultado1").innerText = valor1;
@@ -36,6 +40,10 @@ document.getElementById("siguiente1").onclick = function () {
 };
 
 document.getElementById("dado2").onclick = function () {
+
+    animarDado("dado2");
+    
+    reproducirSonido();
 
     valor2 = caras2[Math.floor(Math.random() * 6)];
 
@@ -74,3 +82,34 @@ document.getElementById("reinicio").onclick = function () {
     mostrarPantalla("inicio");
 
 };
+
+function animarDado(idDado){
+
+    const dado = document.getElementById(idDado);
+
+    dado.classList.remove("animar-dado");
+
+    void dado.offsetWidth;
+
+    dado.classList.add("animar-dado");
+
+};
+
+function reproducirSonido() {
+
+    const ctx = new(window.AudioContext || window.webkitAudioContext)();
+
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.frequency.value = 200;
+
+    gain.gain.value = 0.2;
+
+    osc.start();
+
+    osc.stop(ctx.currentTime + 0.2);
+}
