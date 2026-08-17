@@ -1,82 +1,101 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    text-align: center;
+const caras1 = [
+    "ASES",
+    "REYES",
+    "DAMAS",
+    "JOTAS",
+    "NEGROS",
+    "ROJOS"
+];
+
+const caras2 = [
+    "ASES2",
+    "REYES2",
+    "DAMAS2",
+    "JOTAS2",
+    "NEGROS2",
+    "ROJOS2"
+];
+
+let valor1 = "";
+let valor2 = "";
+
+function cambiarPantalla(id) {
+    document.querySelectorAll(".pantalla")
+        .forEach(p => p.classList.remove("activa"));
+
+    document.getElementById(id)
+        .classList.add("activa");
 }
 
-.pantalla {
-    display: none;
-    min-height: 100vh;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
+document
+.getElementById("btnInicio")
+.addEventListener("click", () => {
+    cambiarPantalla("pantalla1");
+});
 
-.activa {
-    display: flex;
-}
+document
+.getElementById("dado1")
+.addEventListener("click", () => {
 
-#inicio {
-    background: #0057ff;
-}
+    valor1 = caras1[
+        Math.floor(Math.random() * caras1.length)
+    ];
 
-.boton-inicio {
-    background: yellow;
-    color: black;
-    font-size: 32px;
-    font-weight: bold;
-    padding: 20px 50px;
-    border-radius: 20px;
-    border: none;
-}
+    document.getElementById("resultado1").textContent = valor1;
 
-.dado {
-    width: 180px;
-    height: 180px;
-    background: white;
-    border: 4px solid #333;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    margin: 20px;
-}
+    document.getElementById("relanzar1").disabled = false;
+    document.getElementById("siguiente1").disabled = false;
+});
 
-.caida {
-    animation: caidaGiro 1s ease;
-}
+document
+.getElementById("relanzar1")
+.addEventListener("click", () => {
+    document.getElementById("dado1").click();
+});
 
-@keyframes caidaGiro {
+document
+.getElementById("siguiente1")
+.addEventListener("click", () => {
+    cambiarPantalla("pantalla2");
+});
 
-    0% {
-        transform: translateY(-300px) rotate(0deg);
-    }
+document
+.getElementById("dado2")
+.addEventListener("click", () => {
 
-    100% {
-        transform: translateY(0px) rotate(1080deg);
-    }
+    valor2 = caras2[
+        Math.floor(Math.random() * caras2.length)
+    ];
 
-}
+    document.getElementById("resultado2").textContent = valor2;
 
-button {
-    padding: 12px 20px;
-    margin: 10px;
-    font-size: 16px;
-}
+    document.getElementById("relanzar2").disabled = false;
+    document.getElementById("siguiente2").disabled = false;
+});
 
-.resultado-final {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
+document
+.getElementById("relanzar2")
+.addEventListener("click", () => {
+    document.getElementById("dado2").click();
+});
 
-.resultado-final div {
-    border: 2px solid black;
-    padding: 20px;
-    border-radius: 10px;
-    font-size: 26px;
-    font-weight: bold;
-}
+document
+.getElementById("siguiente2")
+.addEventListener("click", () => {
+
+    document.getElementById("final1").textContent = valor1;
+    document.getElementById("final2").textContent = valor2;
+
+    cambiarPantalla("resumen");
+});
+
+document
+.getElementById("reinicio")
+.addEventListener("click", () => {
+
+    valor1 = "";
+    valor2 = "";
+
+    cambiarPantalla("inicio");
+
+});
