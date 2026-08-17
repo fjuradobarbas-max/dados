@@ -1,0 +1,160 @@
+const caras1 = [
+    "ASES",
+    "REYES",
+    "DAMAS",
+    "JOTAS",
+    "NEGROS",
+    "ROJOS"
+];
+
+const caras2 = [
+    "ASES2",
+    "REYES2",
+    "DAMAS2",
+    "JOTAS2",
+    "NEGROS2",
+    "ROJOS2"
+];
+
+let valor1 = "";
+let valor2 = "";
+
+function cambiarPantalla(id) {
+
+    document
+        .querySelectorAll(".pantalla")
+        .forEach(p => p.classList.remove("activa"));
+
+    document
+        .getElementById(id)
+        .classList.add("activa");
+}
+
+function sonidoLanzamiento() {
+
+    const ctx =
+        new(window.AudioContext || window.webkitAudioContext)();
+
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.frequency.value = 300;
+
+    gain.gain.setValueAtTime(0.2, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(
+        0.0001,
+        ctx.currentTime + 0.3
+    );
+
+    osc.start();
+    osc.stop(ctx.currentTime + 0.3);
+}
+
+function lanzar(dado, array, callback) {
+
+    sonidoLanzamiento();
+
+    dado.classList.remove("caida");
+
+    void dado.offsetWidth;
+
+    dado.classList.add("caida");
+
+    setTimeout(() => {
+
+        callback(
+            array[
+                Math.floor(
+                    Math.random() * array.length
+                )
+            ]
+        );
+
+    }, 1000);
+}
+
+document
+.getElementById("btnInicio")
+.onclick = () => cambiarPantalla("pantalla1");
+
+document
+.getElementById("dado1")
+.onclick = () => {
+
+    lanzar(
+        document.getElementById("dado1"),
+        caras1,
+        resultado => {
+
+            valor1 = resultado;
+
+            document.getElementById("resultado1").innerText = resultado;
+
+            document.getElementById("relanzar1").disabled = false;
+            document.getElementById("siguiente1").disabled = false;
+        }
+    );
+};
+
+document
+.getElementById("relanzar1")
+.onclick = () => document.getElementById("dado1").click();
+
+document
+.getElementById("siguiente1")
+.onclick = () => cambiarPantalla("pantalla2");
+
+document
+.getElementById("dado2")
+.onclick = () => {
+
+    lanzar(
+        document.getElementById("dado2"),
+        caras2,
+        resultado => {
+
+            valor2 = resultado;
+
+            document.getElementById("resultado2").innerText = resultado;
+
+            document.getElementById("relanzar2").disabled = false;
+            document.getElementById("siguiente2").disabled = false;
+        }
+    );
+};
+
+document
+.getElementById("relanzar2")
+.onclick = () => document.getElementById("dado2").click();
+
+document
+.getElementById("siguiente2")
+.onclick = () => {
+
+    document.getElementById("final1").innerText = valor1;
+    document.getElementById("final2").innerText = valor2;
+
+    cambiarPantalla("resumen");
+};
+
+document
+.getElementById("reinicio")
+.onclick = () => {
+
+    valor1 = "";
+    valor2 = "";
+
+    document.getElementById("resultado1").innerText = "";
+    document.getElementById("resultado2").innerText = "";
+
+    document.getElementById("relanzar1").disabled = true;
+    document.getElementById("siguiente1").disabled = true;
+
+    document.getElementById("relanzar2").disabled = true;
+    document.getElementById("siguiente2").disabled = true;
+
+    cambiarPantalla("inicio");
+};
