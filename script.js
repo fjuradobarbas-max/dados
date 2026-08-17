@@ -147,10 +147,10 @@ document.getElementById("siguiente1").onclick = function(){
 document.getElementById("siguiente2").onclick = function(){
 
     document.getElementById("final1").innerHTML =
-        "PRIMER DADO<br><br>" + valor1;
+        valor1;
 
     document.getElementById("final2").innerHTML =
-        "SEGUNDO DADO<br><br>" + valor2;
+        valor2;
 
     mostrarPantalla("resumen");
 };
