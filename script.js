@@ -62,37 +62,37 @@ function lanzarDado(idDado,tipo){
             case 0:
                 dado.style.transform =
                     "rotateX(0deg) rotateY(0deg)";
-                nombre = tipo === 1 ? "ASES" : "ASES2";
+                nombre = tipo === 1 ? "BESAR" : "LABIOS";
                 break;
 
             case 1:
                 dado.style.transform =
                     "rotateY(180deg)";
-                nombre = tipo === 1 ? "REYES" : "REYES2";
+                nombre = tipo === 1 ? "MORDER" : "CUELLO";
                 break;
 
             case 2:
                 dado.style.transform =
                     "rotateY(-90deg)";
-                nombre = tipo === 1 ? "DAMAS" : "DAMAS2";
+                nombre = tipo === 1 ? "ACARICIAR" : "ESPALDA";
                 break;
 
             case 3:
                 dado.style.transform =
                     "rotateY(90deg)";
-                nombre = tipo === 1 ? "JOTAS" : "JOTAS2";
+                nombre = tipo === 1 ? "CHUPAR" : "GENITALES";
                 break;
 
             case 4:
                 dado.style.transform =
                     "rotateX(-90deg)";
-                nombre = tipo === 1 ? "NEGROS" : "NEGROS2";
+                nombre = tipo === 1 ? "MASAJEAR" : "PIES";
                 break;
 
             case 5:
                 dado.style.transform =
                     "rotateX(90deg)";
-                nombre = tipo === 1 ? "ROJOS" : "ROJOS2";
+                nombre = tipo === 1 ? "GOLPEAR" : "PECHO";
                 break;
         }
 
